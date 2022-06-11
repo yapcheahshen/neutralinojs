@@ -1,0 +1,59 @@
+name: Nightly release
+on: 
+  workflow_dispatch:
+jobs:
+ 
+  build-windows:
+    runs-on: windows-latest
+    steps:
+    - name: Checkout 
+      uses: actions/checkout@v2
+    - name: Build
+      run: python ./scripts/bz.py
+      shell: cmd
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: win_binary
+        path: bin/neutralino-win_x64.exe
+
+  
+        
+  update-nightly-release:
+    needs: [ build-windows]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout 
+      uses: actions/checkout@v2
+      
+    - name: Download Windows build artifacts
+      uses: actions/download-artifact@v2
+      with:
+        name: win_binary
+        path: ./bin
+        
+           
+    - name: Create Release zip
+      uses: vimtor/action-zip@v1
+      with:
+        files: ./bin/neutralino-win_x64.exe  ./bin/WebView2Loader.dll
+        dest: './bin/neutralinojs-nightly.zip'
+        
+    - name: Create Release Notes
+      run: |
+        chmod +x ./scripts/rz.py
+        ./scripts/rz.py create nightly --no-changes --top=":warning: **Nightly build**: This nighly-release may contain experimental features and breaking changes."
+        
+    - name: Update nightly GitHub release
+      uses: ncipollo/release-action@v1
+      with:
+          name: Neutralinojs nightly release
+          bodyFile: ./.tmprz/release_notes.md
+          artifacts: ./bin/neutralinojs-nightly.zip
+          prerelease: true
+          allowUpdates: true
+          tag: nightly
+          
+    - name: Clean Release Notes
+      run: |
+        ./scripts/rz.py cleanup
