@@ -4,7 +4,7 @@ on:
     inputs: 
       version: 
         type: text
-        description: 'my build' 
+        description: '4.6.0' 
 
 jobs:
   
