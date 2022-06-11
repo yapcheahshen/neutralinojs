@@ -98,7 +98,7 @@ jobs:
       with:
         tag_name: nightly
       env:
-        GITHUB_TOKEN: ${{ secrets.COMMIT_TOKEN }}
+        GITHUB_TOKEN: ${{ github.token  }}
         
     - name: Download Linux build artifacts 
       uses: actions/download-artifact@v2
