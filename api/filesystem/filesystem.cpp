@@ -30,7 +30,7 @@ using namespace std;
 using json = nlohmann::json;
 
 namespace fs {
-    
+
 #if defined(_WIN32)
 // From: https://stackoverflow.com/a/6161842/3565513
 long long __winTickToUnixMS(long long windowsTicks) {
@@ -247,7 +247,11 @@ json readFile(const json &input) {
         return output;
     }
     fs::FileReaderResult fileReaderResult;
-    fileReaderResult = fs::readFile(input["path"].get<string>(), input["pos"].get<int> || 0 , input["size"].get<int> || 0  );
+	fileReaderResult = fs::readFile(
+		input["path"].get<string>(),
+		input["pos"].get<int>() || 0,
+		input["size"].get<int>() || 0
+	);
     if(fileReaderResult.hasError) {
         output["error"] = helpers::makeErrorPayload("NE_FS_FILRDER", fileReaderResult.error);
     }
@@ -265,7 +269,11 @@ json readBinaryFile(const json &input) {
         return output;
     }
     fs::FileReaderResult fileReaderResult;
-    fileReaderResult = fs::readFile(input["path"].get<string>(), input["pos"].get<int> || 0 , input["size"].get<int> || 0 );
+    fileReaderResult = fs::readFile(
+		input["path"].get<string>(),
+		input["pos"].get<int>() || 0,
+		input["size"].get<int>() || 0
+    );
     if(fileReaderResult.hasError) {
         output["error"] = helpers::makeErrorPayload("NE_FS_FILRDER", fileReaderResult.error);
     }

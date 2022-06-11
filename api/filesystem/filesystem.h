@@ -34,7 +34,7 @@ struct FileStats {
 
 bool createDirectory(const string &path);
 bool removeFile(const string &filename);
-fs::FileReaderResult readFile(const string &filename, int _pos, int _size);
+fs::FileReaderResult readFile(const string &filename, int _pos = 0, int _size = 0);
 bool writeFile(const fs::FileWriterOptions &fileWriterOptions);
 string getDirectoryName(const string &filename);
 string getCurrentDirectory();
