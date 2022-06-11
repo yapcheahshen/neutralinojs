@@ -32,21 +32,21 @@ jobs:
     - name: Checkout 
       uses: actions/checkout@v2
       
-    - name: Clean previous binaries
-      run: |
-        rm -Force ./bin/neutralino-win_x64.exe
+#     - name: Clean previous binaries
+#       run: |
+#         rm -f bin/neutralino-win_x64.exe
         
     - name: Download Windows build artifacts
       uses: actions/download-artifact@v2
       with:
         name: win_binary
-        path: ./bin
+        path: bin
         
     - name: Create Release zip
       uses: vimtor/action-zip@v1
       with:
-        files: ./bin/neutralino-win_x64.exe ./bin/WebView2Loader.dll
-        dest: './bin/neutralinojs-v${{github.event.inputs.version}}.zip'
+        files: bin/neutralino-win_x64.exe bin/WebView2Loader.dll
+        dest: 'bin/neutralinojs-v${{github.event.inputs.version}}.zip'
         
     - name: Create Release Notes
       run: |
@@ -74,7 +74,7 @@ jobs:
           tag: v${{github.event.inputs.version}}
           name: Neutralinojs v${{github.event.inputs.version}} released!
           bodyFile: ./.tmprz/release_notes.md
-          artifacts: './bin/neutralinojs-v${{github.event.inputs.version}}.zip'
+          artifacts: 'bin/neutralinojs-v${{github.event.inputs.version}}.zip'
           
     - name: Clean Release Notes
       run: |
