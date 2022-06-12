@@ -48,10 +48,10 @@ jobs:
         files: ./bin/neutralino-win_x64.exe ./bin/WebView2Loader.dll
         dest: './bin/neutralinojs-v${{github.event.inputs.version}}.zip'
         
-    - name: Create Release Notes
-      run: |
-        chmod +x ./scripts/rz.py
-        ./scripts/rz.py create ${{github.event.inputs.version}}
+#     - name: Create Release Notes
+#       run: |
+#         chmod +x ./scripts/rz.py
+#         ./scripts/rz.py create ${{github.event.inputs.version}}
         
     - name: Commit and Push Changelog
       uses: EndBug/add-and-commit@v7.4.0
@@ -66,8 +66,8 @@ jobs:
       with: 
         branch: v${{github.event.inputs.version}}
       env:
-        GITHUB_TOKEN: ${{ github.token }}
-        #GITHUB_TOKEN: ${{ secrets.COMMIT_TOKEN }}
+#         GITHUB_TOKEN: ${{ github.token }}
+        GITHUB_TOKEN: ${{ secrets.COMMIT_TOKEN }}
         
     - name: Create a GitHub release
       uses: ncipollo/release-action@v1
