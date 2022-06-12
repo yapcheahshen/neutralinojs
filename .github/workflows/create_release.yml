@@ -74,18 +74,18 @@ jobs:
       with:
           tag: v${{github.event.inputs.version}}
           name: Neutralinojs v${{github.event.inputs.version}} released!
-          bodyFile: ./.tmprz/release_notes.md
+#           bodyFile: ./.tmprz/release_notes.md
           artifacts: './bin/neutralinojs-v${{github.event.inputs.version}}.zip'
           
-    - name: Clean Release Notes
-      run: |
-        ./scripts/rz.py cleanup
+#     - name: Clean Release Notes
+#       run: |
+#         ./scripts/rz.py cleanup
         
-    - name: Send Discord Notification
-      env:
-        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-      uses: Ilshidur/action-discord@master
-      with:
-        args: |
-          Neutralinojs v${{github.event.inputs.version}} released 🚀
-          Changelog: https://github.com/yapcheahshen/neutralinojs/releases/tag/v${{github.event.inputs.version}}
+#     - name: Send Discord Notification
+#       env:
+#         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+#       uses: Ilshidur/action-discord@master
+#       with:
+#         args: |
+#           Neutralinojs v${{github.event.inputs.version}} released 🚀
+#           Changelog: https://github.com/yapcheahshen/neutralinojs/releases/tag/v${{github.event.inputs.version}}
