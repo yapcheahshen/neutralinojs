@@ -195,6 +195,7 @@ def build_compiler_cmd():
     cmd += get_source_files()
     cmd += get_definitions()
     cmd += get_options()
+    cmd +=" /debug:fastlink /Yu /MP "
     cmd += get_target()
     return cmd
 
@@ -231,4 +232,5 @@ if __name__ == '__main__':
         print_ascii_art()
         C = json.loads(configFile.read())
         cmd = build_compiler_cmd()
+        print(cmd)
         compile(cmd)

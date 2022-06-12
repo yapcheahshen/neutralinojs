@@ -25,6 +25,7 @@
 #include "helpers.h"
 #include "api/filesystem/filesystem.h"
 #include "api/os/os.h"
+#include "api/debug/debug.h"
 
 using namespace std;
 using json = nlohmann::json;
@@ -93,8 +94,15 @@ fs::FileReaderResult readFile(const string &filename, int _pos, int _size) {
         return fileReaderResult;
     }
     vector<char> buffer;
-    int size = _size || reader.tellg();
-    reader.seekg(_pos || 0, ios::beg);
+    int filesize=reader.tellg();
+    int pos = _pos  ;
+    if (pos>filesize) pos=0;
+
+    if (_size==0) _size=filesize - pos;
+    int size =  _size ;
+    if (size+pos>filesize) size=filesize-pos;
+    
+    reader.seekg( pos , ios::beg);
     buffer.resize(size);
     reader.read(buffer.data(), size);
     string result(buffer.begin(), buffer.end());
@@ -249,8 +257,8 @@ json readFile(const json &input) {
     fs::FileReaderResult fileReaderResult;
 	fileReaderResult = fs::readFile(
 		input["path"].get<string>(),
-		input["pos"].get<int>() || 0,
-		input["size"].get<int>() || 0
+		input["pos"].get<int>() ,
+		input["size"].get<int>()
 	);
     if(fileReaderResult.hasError) {
         output["error"] = helpers::makeErrorPayload("NE_FS_FILRDER", fileReaderResult.error);
@@ -271,8 +279,8 @@ json readBinaryFile(const json &input) {
     fs::FileReaderResult fileReaderResult;
     fileReaderResult = fs::readFile(
 		input["path"].get<string>(),
-		input["pos"].get<int>() || 0,
-		input["size"].get<int>() || 0
+		input["pos"].get<int>() ,
+		input["size"].get<int>()
     );
     if(fileReaderResult.hasError) {
         output["error"] = helpers::makeErrorPayload("NE_FS_FILRDER", fileReaderResult.error);

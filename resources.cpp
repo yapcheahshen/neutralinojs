@@ -117,7 +117,7 @@ fs::FileReaderResult getFile(const string &filename) {
         return __getFileFromBundle(filename);
     }
 
-    fs::FileReaderResult fileReaderResult = fs::readFile(settings::joinAppPath(filename));
+    fs::FileReaderResult fileReaderResult = fs::readFile(settings::joinAppPath(filename),0,0);
     if(fileReaderResult.hasError) {
         debug::log("ERROR", fileReaderResult.error);
     }
