@@ -75,6 +75,10 @@
     <IncludePath>..;../lib;../lib/asio/include;../lib/webview/windows;$(IncludePath)</IncludePath>
     <OutDir>C:\exe\neu-hello-world\bin\</OutDir>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>..;../lib;../lib/asio/include;../lib/webview/windows;$(IncludePath)</IncludePath>
+    <OutDir>C:\exe\neu-hello-world\bin\</OutDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -111,6 +115,17 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>../lib/webview/windows/WebView2Loader.dll.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <UndefinePreprocessorDefinitions>
+      </UndefinePreprocessorDefinitions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <PreprocessorDefinitions>ASIO_STANDALONE;_WEBSOCKETPP_CPP11_STL_;_HAS_STD_BYTE=0;TRAY_WINAPI=1;ELPP_NO_DEFAULT_LOG_FILE=1;NL_COMMIT="8cbe7ac1c4e05b1c81059ad9bece97e9360c3ce1";NL_VERSION="4.7.0";HAVE_PUFF</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>../lib/webview/windows/WebView2Loader.dll.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
