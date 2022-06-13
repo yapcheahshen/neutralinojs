@@ -47,7 +47,7 @@ json getData(const json &input) {
     string filename = bucketPath + "/" + key + STORAGE_EXT;
 
     fs::FileReaderResult fileReaderResult;
-    fileReaderResult = fs::readFile(filename,0,0);
+    fileReaderResult = fs::readFile(filename);
     if(fileReaderResult.hasError) {
         output["error"] = helpers::makeErrorPayload("NE_ST_NOSTKEX", "Unable to find storage key: " + key +
                              ". " + fileReaderResult.error);

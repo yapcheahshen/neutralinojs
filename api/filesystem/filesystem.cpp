@@ -85,7 +85,7 @@ string getFullPathFromRelative(const string &path) {
     #endif
 }
 
-fs::FileReaderResult readFile(const string &filename, int _pos, int _size) {
+fs::FileReaderResult readFile(const string &filename) {
     fs::FileReaderResult fileReaderResult;
     ifstream reader(filename.c_str(), ios::binary | ios::ate);
     if(!reader.is_open()) {
@@ -94,15 +94,9 @@ fs::FileReaderResult readFile(const string &filename, int _pos, int _size) {
         return fileReaderResult;
     }
     vector<char> buffer;
-    int filesize=reader.tellg();
-    int pos = _pos  ;
-    if (pos>filesize) pos=0;
-
-    if (_size==0) _size=filesize - pos;
-    int size =  _size ;
-    if (size+pos>filesize) size=filesize-pos;
+    int size=reader.tellg();
     
-    reader.seekg( pos , ios::beg);
+    reader.seekg( 0 , ios::beg);
     buffer.resize(size);
     reader.read(buffer.data(), size);
     string result(buffer.begin(), buffer.end());
@@ -255,11 +249,7 @@ json readFile(const json &input) {
         return output;
     }
     fs::FileReaderResult fileReaderResult;
-	fileReaderResult = fs::readFile(
-		input["path"].get<string>(),
-		input["pos"].get<int>() ,
-		input["size"].get<int>()
-	);
+	fileReaderResult = fs::readFile(input["path"].get<string>());
     if(fileReaderResult.hasError) {
         output["error"] = helpers::makeErrorPayload("NE_FS_FILRDER", fileReaderResult.error);
     }
@@ -277,11 +267,7 @@ json readBinaryFile(const json &input) {
         return output;
     }
     fs::FileReaderResult fileReaderResult;
-    fileReaderResult = fs::readFile(
-		input["path"].get<string>(),
-		input["pos"].get<int>() ,
-		input["size"].get<int>()
-    );
+    fileReaderResult = fs::readFile(input["path"].get<string>());
     if(fileReaderResult.hasError) {
         output["error"] = helpers::makeErrorPayload("NE_FS_FILRDER", fileReaderResult.error);
     }
