@@ -6,6 +6,7 @@
 #include "lib/json/json.hpp"
 #include "helpers.h"
 #include "settings.h"
+#include "resources.h"
 
 using namespace std;
 using json = nlohmann::json;
@@ -44,12 +45,18 @@ namespace unzip {
 
     JZFile* openZip(string fn) {
         FILE* fp;
+        string zipRoot;
+        if (resources::getMode() == "directory") {
+            json jZipRoot =settings::getOptionForCurrentMode("zipRoot");
+            if (jZipRoot.is_null()) {
+                zipRoot = "unzip/";
+            }
+            else {
+                zipRoot = jZipRoot.get<string>();
+            }
+        }
 
-        json jDocumentRoot = settings::getOptionForCurrentMode("documentRoot");
-        string documentRoot = jDocumentRoot.get<string>();
-        if (documentRoot.substr(0, 1) == "/") documentRoot = documentRoot.substr(1);
-
-        string zipfn = documentRoot + fn;
+        string zipfn = zipRoot + fn;
         int err = fopen_s(&fp, zipfn.c_str(), "rb");
         if (err) return 0;
         JZFile* zip = jzfile_from_stdio_file(fp);
