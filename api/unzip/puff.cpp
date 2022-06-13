@@ -78,7 +78,7 @@
  *                      - Add full code coverage test to Makefile
  * 2.3  21 Jan 2013     - Check for invalid code length codes in dynamic blocks
  */
-
+extern "C" {
 #include <setjmp.h>             /* for setjmp(), longjmp(), and jmp_buf */
 #include "puff.h"               /* prototype for puff() */
 
@@ -837,4 +837,6 @@ int puff(unsigned char *dest,           /* pointer to destination pointer */
         *sourcelen = s.incnt;
     }
     return err;
+}
+
 }

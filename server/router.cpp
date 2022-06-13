@@ -23,6 +23,7 @@
 #include "api/events/events.h"
 #include "api/extensions/extensions.h"
 #include "api/clipboard/clipboard.h"
+#include "api/unzip/unzip.h" /// yap
 
 #if defined(__APPLE__)
 #include <dispatch/dispatch.h>
@@ -126,7 +127,11 @@ router::NativeMessage executeNativeMethod(const router::NativeMessage &request) 
         {"extensions.getStats", extensions::controllers::getStats},
         // Neutralino.clipboard
         {"clipboard.readText", clipboard::controllers::readText},
-        {"clipboard.writeText", clipboard::controllers::writeText}
+        {"clipboard.writeText", clipboard::controllers::writeText},
+        // unzip
+
+        {"unzip.readFile", unzip::controllers::readFile},
+        {"unzip.fileList", unzip::controllers::fileList}
     };
 
     if(methodMap.find(nativeMethodId) != methodMap.end()) {

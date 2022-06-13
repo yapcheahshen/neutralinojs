@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "junzip.h"
-
+extern "C" {
 unsigned char jzBuffer[JZ_BUFFER_SIZE]; // limits maximum zip descriptor size
 
 // Read ZIP file end record. Will move within file.
@@ -194,8 +194,8 @@ int jzReadData(JZFile *zip, JZFileHeader *header, void *buffer) {
             return ret; // Zlib errors are negative
 
         // Inflate compressed data
-        for(compressedLeft = header->compressedSize,
-                uncompressedLeft = header->uncompressedSize;
+        for(compressedLeft = *(uint32_t*)header->compressedSize,
+                uncompressedLeft = *(uint32_t*)header->uncompressedSize;
                 compressedLeft && uncompressedLeft && ret != Z_STREAM_END;
                 compressedLeft -= strm.avail_in) {
             // Read next chunk
@@ -308,4 +308,6 @@ jzfile_from_stdio_file(FILE *fp)
     handle->fp = fp;
 
     return &(handle->handle);
+}
+
 }

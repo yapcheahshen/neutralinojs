@@ -67,9 +67,9 @@ typedef PACK(struct) {
     uint16_t compressionMethod;
     uint16_t lastModFileTime;
     uint16_t lastModFileDate;
-    char  crc32[4];            //workaround for boundary
-    char  compressedSize[4];
-    char uncompressedSize[4];
+    char  crc32[4];            //workaround for boundary on MSVC
+    char  compressedSize[4];   //workaround for boundary on MSVC
+    char uncompressedSize[4];  //workaround for boundary on MSVC
     uint16_t fileNameLength;
     uint16_t extraFieldLength; // unsupported
 } JZLocalFileHeader;
@@ -93,9 +93,9 @@ typedef PACK(struct){
     char  FileAttributes[6];
     //uint16_t internalFileAttributes; // unsupported  //38
     //uint32_t externalFileAttributes; // unsupported
-    char  relativeOffsetOflocalHeader[4];            //46
+    char  relativeOffsetOflocalHeader[4];            //workaround for boundary on MSVC
 } JZGlobalFileHeader;
-const unsigned int sizeof_JZGlobalFileHeader = 46; //
+const unsigned int sizeof_JZGlobalFileHeader = 46; //sizeof report 48
 
 typedef PACK(struct) {
     uint16_t compressionMethod;

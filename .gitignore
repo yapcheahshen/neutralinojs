@@ -18,3 +18,5 @@ neutralino.js
 # Platform specific 
 Thumbs.db
 .DS_Store
+x64
+.vs

@@ -1,0 +1,859 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <ProjectGuid>{B716AA68-08A9-4591-A8B6-57ACA97F5970}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfAtl>Static</UseOfAtl>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfAtl>Static</UseOfAtl>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>..;../lib;../lib/asio/include;../lib/webview/windows;$(IncludePath)</IncludePath>
+    <OutDir>C:\exe\neu-hello-world\bin\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <PreprocessorDefinitions>ASIO_STANDALONE;_WEBSOCKETPP_CPP11_STL_;_HAS_STD_BYTE=0;TRAY_WINAPI=1;ELPP_NO_DEFAULT_LOG_FILE=1;NL_COMMIT="8cbe7ac1c4e05b1c81059ad9bece97e9360c3ce1";NL_VERSION="4.7.0";HAVE_PUFF</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>../lib/webview/windows/WebView2Loader.dll.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\api\app\app.cpp" />
+    <ClCompile Include="..\api\clipboard\clipboard.cpp" />
+    <ClCompile Include="..\api\computer\computer.cpp" />
+    <ClCompile Include="..\api\debug\debug.cpp" />
+    <ClCompile Include="..\api\events\events.cpp" />
+    <ClCompile Include="..\api\extensions\extensions.cpp" />
+    <ClCompile Include="..\api\filesystem\filesystem.cpp" />
+    <ClCompile Include="..\api\os\os.cpp" />
+    <ClCompile Include="..\api\storage\storage.cpp" />
+    <ClCompile Include="..\api\unzip\junzip.cpp" />
+    <ClCompile Include="..\api\unzip\puff.cpp" />
+    <ClCompile Include="..\api\unzip\unzip.cpp" />
+    <ClCompile Include="..\api\window\window.cpp" />
+    <ClCompile Include="..\auth\authbasic.cpp" />
+    <ClCompile Include="..\auth\permission.cpp" />
+    <ClCompile Include="..\chrome.cpp" />
+    <ClCompile Include="..\extensions_loader.cpp" />
+    <ClCompile Include="..\helpers.cpp" />
+    <ClCompile Include="..\lib\clip\clip.cpp" />
+    <ClCompile Include="..\lib\clip\clip_win.cpp" />
+    <ClCompile Include="..\lib\clip\image.cpp" />
+    <ClCompile Include="..\lib\easylogging\easylogging++.cc" />
+    <ClCompile Include="..\lib\platformfolders\platform_folders.cpp" />
+    <ClCompile Include="..\lib\tinyprocess\process.cpp" />
+    <ClCompile Include="..\lib\tinyprocess\process_win.cpp" />
+    <ClCompile Include="..\main.cpp" />
+    <ClCompile Include="..\resources.cpp" />
+    <ClCompile Include="..\server\neuserver.cpp" />
+    <ClCompile Include="..\server\router.cpp" />
+    <ClCompile Include="..\settings.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\api\app\app.h" />
+    <ClInclude Include="..\api\clipboard\clipboard.h" />
+    <ClInclude Include="..\api\computer\computer.h" />
+    <ClInclude Include="..\api\debug\debug.h" />
+    <ClInclude Include="..\api\events\events.h" />
+    <ClInclude Include="..\api\extensions\extensions.h" />
+    <ClInclude Include="..\api\filesystem\filesystem.h" />
+    <ClInclude Include="..\api\os\os.h" />
+    <ClInclude Include="..\api\storage\storage.h" />
+    <ClInclude Include="..\api\unzip\junzip.h" />
+    <ClInclude Include="..\api\unzip\puff.h" />
+    <ClInclude Include="..\api\unzip\unzip.h" />
+    <ClInclude Include="..\api\window\window.h" />
+    <ClInclude Include="..\auth\authbasic.h" />
+    <ClInclude Include="..\auth\permission.h" />
+    <ClInclude Include="..\chrome.h" />
+    <ClInclude Include="..\extensions_loader.h" />
+    <ClInclude Include="..\helpers.h" />
+    <ClInclude Include="..\lib\asio\include\asio.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\any_io_executor.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\associated_allocator.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\associated_cancellation_slot.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\associated_executor.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\associator.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\async_result.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\awaitable.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\basic_datagram_socket.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\basic_deadline_timer.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\basic_file.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\basic_io_object.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\basic_random_access_file.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\basic_raw_socket.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\basic_readable_pipe.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\basic_seq_packet_socket.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\basic_serial_port.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\basic_signal_set.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\basic_socket.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\basic_socket_acceptor.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\basic_socket_iostream.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\basic_socket_streambuf.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\basic_streambuf.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\basic_streambuf_fwd.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\basic_stream_file.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\basic_stream_socket.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\basic_waitable_timer.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\basic_writable_pipe.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\bind_cancellation_slot.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\bind_executor.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\buffer.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\buffered_read_stream.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\buffered_read_stream_fwd.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\buffered_stream.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\buffered_stream_fwd.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\buffered_write_stream.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\buffered_write_stream_fwd.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\buffers_iterator.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\buffer_registration.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\cancellation_signal.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\cancellation_state.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\cancellation_type.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\completion_condition.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\compose.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\connect.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\connect_pipe.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\coroutine.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\co_spawn.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\deadline_timer.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\defer.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detached.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\array.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\array_fwd.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\assert.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\atomic_count.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\base_from_cancellation_state.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\base_from_completion_cond.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\bind_handler.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\blocking_executor_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\buffered_stream_storage.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\buffer_resize_guard.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\buffer_sequence_adapter.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\bulk_executor_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\call_stack.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\chrono.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\chrono_time_traits.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\completion_handler.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\concurrency_hint.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\conditionally_enabled_event.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\conditionally_enabled_mutex.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\config.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\consuming_buffers.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\cstddef.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\cstdint.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\date_time_fwd.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\deadline_timer_service.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\dependent_type.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\descriptor_ops.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\descriptor_read_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\descriptor_write_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\dev_poll_reactor.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\epoll_reactor.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\event.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\eventfd_select_interrupter.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\executor_function.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\executor_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\fd_set_adapter.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\fenced_block.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\functional.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\future.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\gcc_arm_fenced_block.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\gcc_hppa_fenced_block.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\gcc_sync_fenced_block.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\gcc_x86_fenced_block.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\global.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\handler_alloc_helpers.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\handler_cont_helpers.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\handler_invoke_helpers.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\handler_tracking.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\handler_type_requirements.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\handler_work.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\hash_map.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\impl\dev_poll_reactor.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\impl\epoll_reactor.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\impl\io_uring_service.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\impl\kqueue_reactor.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\impl\select_reactor.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\impl\service_registry.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\impl\strand_executor_service.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\impl\strand_service.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\impl\winrt_timer_scheduler.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\impl\win_iocp_io_context.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\io_control.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\io_object_impl.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\io_uring_descriptor_read_at_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\io_uring_descriptor_read_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\io_uring_descriptor_service.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\io_uring_descriptor_write_at_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\io_uring_descriptor_write_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\io_uring_file_service.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\io_uring_null_buffers_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\io_uring_operation.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\io_uring_service.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\io_uring_socket_accept_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\io_uring_socket_connect_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\io_uring_socket_recvfrom_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\io_uring_socket_recvmsg_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\io_uring_socket_recv_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\io_uring_socket_sendto_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\io_uring_socket_send_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\io_uring_socket_service.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\io_uring_socket_service_base.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\io_uring_wait_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\is_buffer_sequence.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\is_executor.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\keyword_tss_ptr.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\kqueue_reactor.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\limits.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\local_free_on_block_exit.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\macos_fenced_block.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\memory.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\mutex.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\noncopyable.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\non_const_lvalue.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\null_event.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\null_fenced_block.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\null_global.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\null_mutex.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\null_reactor.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\null_signal_blocker.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\null_socket_service.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\null_static_mutex.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\null_thread.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\null_tss_ptr.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\object_pool.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\old_win_sdk_compat.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\operation.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\op_queue.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\pipe_select_interrupter.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\pop_options.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\posix_event.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\posix_fd_set_adapter.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\posix_global.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\posix_mutex.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\posix_serial_port_service.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\posix_signal_blocker.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\posix_static_mutex.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\posix_thread.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\posix_tss_ptr.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\push_options.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\reactive_descriptor_service.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\reactive_null_buffers_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\reactive_socket_accept_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\reactive_socket_connect_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\reactive_socket_recvfrom_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\reactive_socket_recvmsg_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\reactive_socket_recv_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\reactive_socket_sendto_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\reactive_socket_send_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\reactive_socket_service.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\reactive_socket_service_base.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\reactive_wait_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\reactor.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\reactor_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\reactor_op_queue.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\recycling_allocator.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\regex_fwd.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\resolver_service.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\resolver_service_base.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\resolve_endpoint_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\resolve_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\resolve_query_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\scheduler.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\scheduler_operation.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\scheduler_task.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\scheduler_thread_info.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\scoped_lock.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\scoped_ptr.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\select_interrupter.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\select_reactor.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\service_registry.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\signal_blocker.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\signal_handler.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\signal_init.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\signal_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\signal_set_service.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\socket_holder.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\socket_ops.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\socket_option.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\socket_select_interrupter.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\socket_types.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\solaris_fenced_block.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\source_location.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\static_mutex.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\std_event.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\std_fenced_block.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\std_global.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\std_mutex.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\std_static_mutex.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\std_thread.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\strand_executor_service.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\strand_service.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\string_view.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\thread.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\thread_context.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\thread_group.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\thread_info_base.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\throw_error.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\throw_exception.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\timer_queue.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\timer_queue_base.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\timer_queue_ptime.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\timer_queue_set.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\timer_scheduler.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\timer_scheduler_fwd.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\tss_ptr.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\type_traits.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\variadic_templates.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\wait_handler.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\wait_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\winapp_thread.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\wince_thread.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\winrt_async_manager.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\winrt_async_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\winrt_resolver_service.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\winrt_resolve_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\winrt_socket_connect_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\winrt_socket_recv_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\winrt_socket_send_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\winrt_ssocket_service.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\winrt_ssocket_service_base.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\winrt_timer_scheduler.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\winrt_utils.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\winsock_init.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\win_event.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\win_fd_set_adapter.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\win_fenced_block.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\win_global.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\win_iocp_file_service.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\win_iocp_handle_read_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\win_iocp_handle_service.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\win_iocp_handle_write_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\win_iocp_io_context.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\win_iocp_null_buffers_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\win_iocp_operation.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\win_iocp_overlapped_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\win_iocp_overlapped_ptr.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\win_iocp_serial_port_service.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\win_iocp_socket_accept_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\win_iocp_socket_connect_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\win_iocp_socket_recvfrom_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\win_iocp_socket_recvmsg_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\win_iocp_socket_recv_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\win_iocp_socket_send_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\win_iocp_socket_service.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\win_iocp_socket_service_base.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\win_iocp_thread_info.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\win_iocp_wait_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\win_mutex.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\win_object_handle_service.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\win_static_mutex.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\win_thread.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\win_tss_ptr.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\work_dispatcher.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\detail\wrapped_handler.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\dispatch.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\error.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\error_code.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\allocator.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\any_executor.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\bad_executor.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\blocking.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\blocking_adaptation.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\bulk_execute.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\bulk_guarantee.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\connect.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\context.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\context_as.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\detail\as_invocable.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\detail\as_operation.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\detail\as_receiver.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\detail\bulk_sender.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\detail\submit_receiver.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\detail\void_receiver.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\execute.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\executor.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\invocable_archetype.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\mapping.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\occupancy.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\operation_state.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\outstanding_work.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\prefer_only.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\receiver.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\receiver_invocation_error.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\relationship.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\schedule.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\scheduler.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\sender.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\set_done.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\set_error.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\set_value.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\start.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution\submit.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\execution_context.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\executor.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\executor_work_guard.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\append.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\as_single.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\as_tuple.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\awaitable_operators.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\basic_channel.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\basic_concurrent_channel.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\cancellation_condition.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\channel.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\channel_error.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\channel_traits.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\concurrent_channel.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\coro.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\coro_traits.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\co_spawn.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\deferred.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\detail\channel_handler.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\detail\channel_message.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\detail\channel_operation.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\detail\channel_payload.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\detail\channel_receive_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\detail\channel_send_functions.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\detail\channel_send_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\detail\channel_service.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\detail\completion_handler_erasure.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\detail\coro_promise_allocator.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\detail\has_signature.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\detail\impl\channel_service.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\detail\partial_promise.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\impl\append.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\impl\as_single.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\impl\as_tuple.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\impl\coro.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\impl\deferred.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\impl\parallel_group.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\impl\prepend.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\impl\promise.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\impl\use_coro.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\parallel_group.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\prepend.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\promise.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\experimental\use_coro.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\file_base.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\generic\basic_endpoint.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\generic\datagram_protocol.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\generic\detail\endpoint.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\generic\raw_protocol.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\generic\seq_packet_protocol.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\generic\stream_protocol.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\handler_alloc_hook.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\handler_continuation_hook.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\handler_invoke_hook.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\high_resolution_timer.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\impl\awaitable.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\impl\buffered_read_stream.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\impl\buffered_write_stream.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\impl\compose.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\impl\connect.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\impl\connect_pipe.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\impl\co_spawn.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\impl\defer.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\impl\detached.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\impl\dispatch.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\impl\execution_context.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\impl\executor.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\impl\io_context.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\impl\post.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\impl\read.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\impl\read_at.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\impl\read_until.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\impl\redirect_error.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\impl\serial_port_base.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\impl\spawn.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\impl\src.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\impl\system_context.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\impl\system_executor.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\impl\thread_pool.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\impl\use_awaitable.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\impl\use_future.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\impl\write.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\impl\write_at.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\io_context.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\io_context_strand.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\io_service.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\io_service_strand.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ip\address.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ip\address_v4.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ip\address_v4_iterator.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ip\address_v4_range.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ip\address_v6.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ip\address_v6_iterator.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ip\address_v6_range.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ip\bad_address_cast.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ip\basic_endpoint.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ip\basic_resolver.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ip\basic_resolver_entry.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ip\basic_resolver_iterator.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ip\basic_resolver_query.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ip\basic_resolver_results.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ip\detail\endpoint.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ip\detail\socket_option.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ip\host_name.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ip\icmp.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ip\impl\address.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ip\impl\address_v4.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ip\impl\address_v6.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ip\impl\basic_endpoint.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ip\impl\network_v4.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ip\impl\network_v6.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ip\multicast.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ip\network_v4.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ip\network_v6.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ip\resolver_base.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ip\resolver_query_base.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ip\tcp.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ip\udp.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ip\unicast.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ip\v6_only.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\is_applicable_property.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\is_executor.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\is_read_buffered.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\is_write_buffered.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\local\basic_endpoint.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\local\connect_pair.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\local\datagram_protocol.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\local\detail\endpoint.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\local\stream_protocol.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\multiple_exceptions.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\packaged_task.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\placeholders.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\posix\basic_descriptor.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\posix\basic_stream_descriptor.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\posix\descriptor.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\posix\descriptor_base.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\posix\stream_descriptor.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\post.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\prefer.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\query.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\random_access_file.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\read.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\readable_pipe.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\read_at.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\read_until.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\redirect_error.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\registered_buffer.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\require.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\require_concept.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\serial_port.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\serial_port_base.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\signal_set.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\socket_base.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\spawn.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ssl.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ssl\context.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ssl\context_base.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ssl\detail\buffered_handshake_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ssl\detail\engine.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ssl\detail\handshake_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ssl\detail\io.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ssl\detail\openssl_init.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ssl\detail\openssl_types.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ssl\detail\password_callback.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ssl\detail\read_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ssl\detail\shutdown_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ssl\detail\stream_core.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ssl\detail\verify_callback.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ssl\detail\write_op.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ssl\error.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ssl\host_name_verification.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ssl\impl\context.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ssl\impl\src.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ssl\rfc2818_verification.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ssl\stream.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ssl\stream_base.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ssl\verify_context.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ssl\verify_mode.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\static_thread_pool.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\steady_timer.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\strand.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\streambuf.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\stream_file.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\system_context.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\system_error.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\system_executor.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\system_timer.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\this_coro.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\thread.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\thread_pool.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\time_traits.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\traits\bulk_execute_free.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\traits\bulk_execute_member.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\traits\connect_free.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\traits\connect_member.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\traits\equality_comparable.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\traits\execute_free.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\traits\execute_member.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\traits\prefer_free.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\traits\prefer_member.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\traits\query_free.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\traits\query_member.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\traits\query_static_constexpr_member.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\traits\require_concept_free.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\traits\require_concept_member.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\traits\require_free.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\traits\require_member.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\traits\schedule_free.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\traits\schedule_member.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\traits\set_done_free.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\traits\set_done_member.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\traits\set_error_free.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\traits\set_error_member.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\traits\set_value_free.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\traits\set_value_member.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\traits\start_free.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\traits\start_member.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\traits\static_query.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\traits\static_require.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\traits\static_require_concept.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\traits\submit_free.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\traits\submit_member.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ts\buffer.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ts\executor.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ts\internet.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ts\io_context.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ts\net.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ts\netfwd.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ts\socket.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\ts\timer.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\unyield.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\uses_executor.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\use_awaitable.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\use_future.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\version.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\wait_traits.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\windows\basic_object_handle.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\windows\basic_overlapped_handle.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\windows\basic_random_access_handle.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\windows\basic_stream_handle.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\windows\object_handle.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\windows\overlapped_handle.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\windows\overlapped_ptr.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\windows\random_access_handle.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\windows\stream_handle.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\writable_pipe.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\write.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\write_at.hpp" />
+    <ClInclude Include="..\lib\asio\include\asio\yield.hpp" />
+    <ClInclude Include="..\lib\base64\base64.hpp" />
+    <ClInclude Include="..\lib\clip\clip.h" />
+    <ClInclude Include="..\lib\clip\clip_common.h" />
+    <ClInclude Include="..\lib\clip\clip_lock_impl.h" />
+    <ClInclude Include="..\lib\clip\clip_win_wic.h" />
+    <ClInclude Include="..\lib\clip\clip_x11_png.h" />
+    <ClInclude Include="..\lib\easylogging\easylogging++.h" />
+    <ClInclude Include="..\lib\filedialogs\portable-file-dialogs.h" />
+    <ClInclude Include="..\lib\json\json.hpp" />
+    <ClInclude Include="..\lib\platformfolders\platform_folders.h" />
+    <ClInclude Include="..\lib\tinyprocess\process.hpp" />
+    <ClInclude Include="..\lib\tray\tray.h" />
+    <ClInclude Include="..\lib\websocketpp\base64\base64.hpp" />
+    <ClInclude Include="..\lib\websocketpp\client.hpp" />
+    <ClInclude Include="..\lib\websocketpp\close.hpp" />
+    <ClInclude Include="..\lib\websocketpp\common\asio.hpp" />
+    <ClInclude Include="..\lib\websocketpp\common\asio_ssl.hpp" />
+    <ClInclude Include="..\lib\websocketpp\common\chrono.hpp" />
+    <ClInclude Include="..\lib\websocketpp\common\connection_hdl.hpp" />
+    <ClInclude Include="..\lib\websocketpp\common\cpp11.hpp" />
+    <ClInclude Include="..\lib\websocketpp\common\functional.hpp" />
+    <ClInclude Include="..\lib\websocketpp\common\md5.hpp" />
+    <ClInclude Include="..\lib\websocketpp\common\memory.hpp" />
+    <ClInclude Include="..\lib\websocketpp\common\network.hpp" />
+    <ClInclude Include="..\lib\websocketpp\common\platforms.hpp" />
+    <ClInclude Include="..\lib\websocketpp\common\random.hpp" />
+    <ClInclude Include="..\lib\websocketpp\common\regex.hpp" />
+    <ClInclude Include="..\lib\websocketpp\common\stdint.hpp" />
+    <ClInclude Include="..\lib\websocketpp\common\system_error.hpp" />
+    <ClInclude Include="..\lib\websocketpp\common\thread.hpp" />
+    <ClInclude Include="..\lib\websocketpp\common\time.hpp" />
+    <ClInclude Include="..\lib\websocketpp\common\type_traits.hpp" />
+    <ClInclude Include="..\lib\websocketpp\concurrency\basic.hpp" />
+    <ClInclude Include="..\lib\websocketpp\concurrency\none.hpp" />
+    <ClInclude Include="..\lib\websocketpp\config\asio.hpp" />
+    <ClInclude Include="..\lib\websocketpp\config\asio_client.hpp" />
+    <ClInclude Include="..\lib\websocketpp\config\asio_no_tls.hpp" />
+    <ClInclude Include="..\lib\websocketpp\config\asio_no_tls_client.hpp" />
+    <ClInclude Include="..\lib\websocketpp\config\boost_config.hpp" />
+    <ClInclude Include="..\lib\websocketpp\config\core.hpp" />
+    <ClInclude Include="..\lib\websocketpp\config\core_client.hpp" />
+    <ClInclude Include="..\lib\websocketpp\config\debug.hpp" />
+    <ClInclude Include="..\lib\websocketpp\config\debug_asio.hpp" />
+    <ClInclude Include="..\lib\websocketpp\config\debug_asio_no_tls.hpp" />
+    <ClInclude Include="..\lib\websocketpp\config\minimal_client.hpp" />
+    <ClInclude Include="..\lib\websocketpp\config\minimal_server.hpp" />
+    <ClInclude Include="..\lib\websocketpp\connection.hpp" />
+    <ClInclude Include="..\lib\websocketpp\connection_base.hpp" />
+    <ClInclude Include="..\lib\websocketpp\endpoint.hpp" />
+    <ClInclude Include="..\lib\websocketpp\endpoint_base.hpp" />
+    <ClInclude Include="..\lib\websocketpp\error.hpp" />
+    <ClInclude Include="..\lib\websocketpp\extensions\extension.hpp" />
+    <ClInclude Include="..\lib\websocketpp\extensions\permessage_deflate\disabled.hpp" />
+    <ClInclude Include="..\lib\websocketpp\extensions\permessage_deflate\enabled.hpp" />
+    <ClInclude Include="..\lib\websocketpp\frame.hpp" />
+    <ClInclude Include="..\lib\websocketpp\http\constants.hpp" />
+    <ClInclude Include="..\lib\websocketpp\http\impl\parser.hpp" />
+    <ClInclude Include="..\lib\websocketpp\http\impl\request.hpp" />
+    <ClInclude Include="..\lib\websocketpp\http\impl\response.hpp" />
+    <ClInclude Include="..\lib\websocketpp\http\parser.hpp" />
+    <ClInclude Include="..\lib\websocketpp\http\request.hpp" />
+    <ClInclude Include="..\lib\websocketpp\http\response.hpp" />
+    <ClInclude Include="..\lib\websocketpp\impl\connection_impl.hpp" />
+    <ClInclude Include="..\lib\websocketpp\impl\endpoint_impl.hpp" />
+    <ClInclude Include="..\lib\websocketpp\impl\utilities_impl.hpp" />
+    <ClInclude Include="..\lib\websocketpp\logger\basic.hpp" />
+    <ClInclude Include="..\lib\websocketpp\logger\levels.hpp" />
+    <ClInclude Include="..\lib\websocketpp\logger\stub.hpp" />
+    <ClInclude Include="..\lib\websocketpp\logger\syslog.hpp" />
+    <ClInclude Include="..\lib\websocketpp\message_buffer\alloc.hpp" />
+    <ClInclude Include="..\lib\websocketpp\message_buffer\message.hpp" />
+    <ClInclude Include="..\lib\websocketpp\message_buffer\pool.hpp" />
+    <ClInclude Include="..\lib\websocketpp\processors\base.hpp" />
+    <ClInclude Include="..\lib\websocketpp\processors\hybi00.hpp" />
+    <ClInclude Include="..\lib\websocketpp\processors\hybi07.hpp" />
+    <ClInclude Include="..\lib\websocketpp\processors\hybi08.hpp" />
+    <ClInclude Include="..\lib\websocketpp\processors\hybi13.hpp" />
+    <ClInclude Include="..\lib\websocketpp\processors\processor.hpp" />
+    <ClInclude Include="..\lib\websocketpp\random\none.hpp" />
+    <ClInclude Include="..\lib\websocketpp\random\random_device.hpp" />
+    <ClInclude Include="..\lib\websocketpp\roles\client_endpoint.hpp" />
+    <ClInclude Include="..\lib\websocketpp\roles\server_endpoint.hpp" />
+    <ClInclude Include="..\lib\websocketpp\server.hpp" />
+    <ClInclude Include="..\lib\websocketpp\sha1\sha1.hpp" />
+    <ClInclude Include="..\lib\websocketpp\transport\asio\base.hpp" />
+    <ClInclude Include="..\lib\websocketpp\transport\asio\connection.hpp" />
+    <ClInclude Include="..\lib\websocketpp\transport\asio\endpoint.hpp" />
+    <ClInclude Include="..\lib\websocketpp\transport\asio\security\base.hpp" />
+    <ClInclude Include="..\lib\websocketpp\transport\asio\security\none.hpp" />
+    <ClInclude Include="..\lib\websocketpp\transport\asio\security\tls.hpp" />
+    <ClInclude Include="..\lib\websocketpp\transport\base\connection.hpp" />
+    <ClInclude Include="..\lib\websocketpp\transport\base\endpoint.hpp" />
+    <ClInclude Include="..\lib\websocketpp\transport\debug\base.hpp" />
+    <ClInclude Include="..\lib\websocketpp\transport\debug\connection.hpp" />
+    <ClInclude Include="..\lib\websocketpp\transport\debug\endpoint.hpp" />
+    <ClInclude Include="..\lib\websocketpp\transport\iostream\base.hpp" />
+    <ClInclude Include="..\lib\websocketpp\transport\iostream\connection.hpp" />
+    <ClInclude Include="..\lib\websocketpp\transport\iostream\endpoint.hpp" />
+    <ClInclude Include="..\lib\websocketpp\transport\stub\base.hpp" />
+    <ClInclude Include="..\lib\websocketpp\transport\stub\connection.hpp" />
+    <ClInclude Include="..\lib\websocketpp\transport\stub\endpoint.hpp" />
+    <ClInclude Include="..\lib\websocketpp\uri.hpp" />
+    <ClInclude Include="..\lib\websocketpp\utf8_validator.hpp" />
+    <ClInclude Include="..\lib\websocketpp\utilities.hpp" />
+    <ClInclude Include="..\lib\websocketpp\version.hpp" />
+    <ClInclude Include="..\lib\webview\webview.h" />
+    <ClInclude Include="..\lib\webview\windows\WebView2.h" />
+    <ClInclude Include="..\resources.h" />
+    <ClInclude Include="..\server\neuserver.h" />
+    <ClInclude Include="..\server\router.h" />
+    <ClInclude Include="..\settings.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\bin\resources\index.html" />
+    <None Include="..\bin\resources\index_spec.html" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
