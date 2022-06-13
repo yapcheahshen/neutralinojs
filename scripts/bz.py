@@ -192,11 +192,9 @@ def build_compiler_cmd():
     cmd += get_compiler()
     cmd += get_std()
     cmd += get_includes()
-    cmd += "  /MP ";
     cmd += get_source_files()
     cmd += get_definitions()
     cmd += get_options()
-    cmd +=" /debug:fastlink "
     cmd += get_target()
     return cmd
 
