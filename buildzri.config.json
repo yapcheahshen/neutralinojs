@@ -65,7 +65,8 @@
             "NL_VERSION=\\\"${BZ_VERSION}\\\"",
             "NL_COMMIT=\\\"${BZ_COMMIT}\\\"",
             "ELPP_NO_DEFAULT_LOG_FILE=1",
-            "ASIO_STANDALONE"
+            "ASIO_STANDALONE",
+	"HAVE_PUFF=1"
         ],
         "linux": [
             "HAVE_XCB_XLIB_H",

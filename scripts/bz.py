@@ -7,7 +7,7 @@ import platform
 import json
 import glob
 
-C = { 'HAVE_PUFF': 1 }
+C = { }
 
 BZ_VERSION = '1.0.0'
 BZ_CONFIG_FILE = 'buildzri.config.json'
