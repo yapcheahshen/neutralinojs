@@ -8,6 +8,7 @@ namespace unzip {
 	namespace controllers {
 		json readFile(const json &input);
 		json fileList(const json &input);
+		json zipList(const json &input);
 	}
 }
 

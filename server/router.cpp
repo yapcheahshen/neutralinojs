@@ -131,7 +131,8 @@ router::NativeMessage executeNativeMethod(const router::NativeMessage &request) 
         // unzip
 
         {"unzip.readFile", unzip::controllers::readFile},
-        {"unzip.fileList", unzip::controllers::fileList}
+        {"unzip.fileList", unzip::controllers::fileList},
+        {"unzip.zipList", unzip::controllers::zipList}
     };
 
     if(methodMap.find(nativeMethodId) != methodMap.end()) {

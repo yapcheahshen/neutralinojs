@@ -7,12 +7,12 @@
 #include "helpers.h"
 #include "settings.h"
 #include "resources.h"
+#include "api/filesystem/filesystem.h"
 
 using namespace std;
 using json = nlohmann::json;
 
 namespace unzip {
-
     int processFile(JZFile* zip) {
         JZFileHeader header;
         char filename[1024];
@@ -42,10 +42,8 @@ namespace unzip {
         return 0;
     }
 
-
-    JZFile* openZip(string fn) {
-        FILE* fp;
-        string zipRoot;
+string getZipRoot(){
+	string zipRoot;
         if (resources::getMode() == "directory") {
             json jZipRoot =settings::getOptionForCurrentMode("zipRoot");
             if (jZipRoot.is_null()) {
@@ -55,6 +53,11 @@ namespace unzip {
                 zipRoot = jZipRoot.get<string>();
             }
         }
+        return zipRoot;
+}
+ JZFile* openZip(string fn) {
+        FILE* fp;
+        string zipRoot = getZipRoot();
 
         string zipfn = zipRoot + fn;
         int err = fopen_s(&fp, zipfn.c_str(), "rb");
@@ -110,6 +113,30 @@ namespace unzip {
     }
 namespace controllers {
 
+static bool endsWith(const std::string& str, const std::string& suffix)
+{
+    return str.size() >= suffix.size() && 0 == str.compare(str.size() - suffix.size(), suffix.size(), suffix);
+}
+json zipList(const json& input) { //list all available 
+	json ip;
+    string zipRoot= getZipRoot();
+    ip["path"] = zipRoot;
+    json op = fs::controllers::readDirectory(ip);
+    json ret;
+    for (const auto& it : op["returnValue"].items()) {
+        string entry = it.value()["entry"].get<string>();
+        if (endsWith(entry, ".zip")) {
+            json ip2;
+            ip2["path"] = zipRoot+entry;
+            json res = fs::controllers::getStats(ip2);
+            ret[entry] = res["returnValue"]["size"].get<int>();
+        }
+    }
+    json out;
+    out["returnValue"] = ret;
+    out["success"] = true;
+	return out;
+}
 json readFile(const json& input) {
     json output;
     if (!helpers::hasRequiredFields(input, { "zip" }) || !helpers::hasRequiredFields(input, { "path" })) {
